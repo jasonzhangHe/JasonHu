@@ -8,7 +8,7 @@
 
 ### k8s
 
-- [k8s](docs/k8s/k8s的初始化与安装/README.md)
+- [k8s](docs/大厂学院/k8s/k8s的初始化与安装/README.md)
 
 ### 设计模式
 

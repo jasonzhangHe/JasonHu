@@ -10,7 +10,7 @@ k8s: CRI(Container Runtime Interface [容器运行时接口](https://jimmysong.i
 
 Client: 客户端;操作`docker`服务器的客户端(命令行或者界面)
 
-Docker_Host: Docker主机;安装Docker服务的主机
+Docker_Host: Docker主机,安装Docker服务的主机
 
 Containers: 容器;在Docker服务器中的容器(一个容器一般是一个应用实例,,容器间相互隔离)
 
@@ -30,7 +30,7 @@ Registries: 仓库;存储Docker Image 的地方.
 
    ![](.\images\image-20221031151828602.png)
 
-#### 2、Docker 隔离原理
+#### 2.Docker 隔离原理
 
 * namespace ***6项隔离***(资源隔离)
 
@@ -52,19 +52,40 @@ Registries: 仓库;存储Docker Image 的地方.
   * 资源统计: 统计系统资源使用量,如`cpu`使用时长、内存用量等
   * 任务控制: 对任务执行挂起、恢复等操作
   
-    ```
+    ```tex
     cgroup资源控制系统,每种系统独立地控制一种资源.如下
     ```
   
-    |         子系统          |                    功能                     |
-    | :---------------------: | :-----------------------------------------: |
-    |           cpu           |       使用调度程序控制任务对cpu的使用       |
-    | cpuacct(CPU Accounting) | 自动生成cgroup中任务对cpu资源使用情况的报告 |
-    |                         |                                             |
-    |                         |                                             |
-    |                         |                                             |
-    |                         |                                             |
-    |                         |                                             |
-    |                         |                                             |
+    |             子系统              |                             功能                             |
+    | :-----------------------------: | :----------------------------------------------------------: |
+    |               cpu               |              使用调度程序控制任务对cpu的使用。               |
+    |     cpuacct(CPU Accounting)     |        自动生成cgroup中任务对cpu资源使用情况的报告。         |
+    |             cpuset              |    为cgroup中的任务分配独立的CPU(多处理器系统时)和内存。     |
+    |             devices             |              开启或关闭cgroup中任务对设备的访问              |
+    |             reezer              |                   挂起或恢复cgroup中的任务                   |
+    |             memory              | 设定cgroup中任务对内存使用量的限定，并生成这些任务对内存资源使用 情况的报告 |
+    | perf_event(Linux CPU性能探测器) |            使cgroup中的任务可以进行统一的性能测试            |
+    |      net_cls(Docker未使用)      | 通过等级识别符标记网络数据包，从而允许Linux流量监控程序(Tra  |
+  
+    #### 3.Docker安装 
+    
+    ```tex
+    以下以centos为例； 
+    更多其他安装方式，详细参照文档： https://docs.docker.com/engine/install/centos/ 
+    ```
+    
+   * 移除旧版本 
+  
+      ```shell
+      sudo yum remove docker*
+      ```
+  
+  - 设置docker yum源 
   
     
+  
+  - 安装最新docker engine 
+  
+    
+  
+  - 安装指定版本docker engine 1、在线安装

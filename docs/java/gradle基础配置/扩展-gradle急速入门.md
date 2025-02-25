@@ -10,7 +10,7 @@
 
 https://gradle.org/releases/
 
-![1612785243881](./assets/1612785243881.png)
+![1612785243881](assets/1612785243881.png)
 
 > 解压到磁盘
 
@@ -20,7 +20,7 @@ https://gradle.org/releases/
 
 GRADLE_HOME、PATH、GRADLE_USER_HOME【可以指向安装目录自己创建的.gradle文件夹】
 
-![1612785341586](./assets/1612785341586.png)
+![1612785341586](assets/1612785341586.png)
 
 ## 3、配置下载加速
 
@@ -129,7 +129,7 @@ repositories {  //仓库管理
 
 ## 4、配置idea整合
 
-![1612785722173](./assets/1612785722173.png)
+![1612785722173](assets/1612785722173.png)
 
 > service 目录，是代表gradle自己下载jar包的位置，类似以前maven的本地仓库
 
