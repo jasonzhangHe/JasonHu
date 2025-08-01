@@ -69,23 +69,19 @@ Registries: 仓库;存储Docker Image 的地方.
   
     #### 3.Docker安装 
     
-    ```tex
-    以下以centos为例； 
-    更多其他安装方式，详细参照文档： https://docs.docker.com/engine/install/centos/ 
-    ```
+    > 以下以centos为例； 
+    > 更多其他安装方式，详细参照文档： https://docs.docker.com/engine/install/centos/ 
     
    * 移除旧版本 
   
-      ```shell
-      sudo yum remove docker*
-      ```
+      > sudo yum remove docker*
   
   - 设置docker yum源 
   
-    
+    > yum-config-manager --add-repo [http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo](http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo "http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo")
   
   - 安装最新docker engine 
   
     
-  
+
   - 安装指定版本docker engine 1、在线安装
