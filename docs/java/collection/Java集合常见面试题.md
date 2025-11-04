@@ -70,34 +70,34 @@ Set注重独一无二的性质，该体系集合用于存储无序（存入和�
 
 1. 是否线程安全：都是不同步的，也就是不保证线程安全；
 
-2. 底层数据结构：`ArrayList` 底层使用**object类型的数组**；`LikedList`底层使用的是**双向链表**数据结构（jdk1.6之前为循环链表）
+2. 底层数据结构：`ArrayList` 底层使用**object类型的数组**；`LikedList`底层使用的是**双向链表**数据结构（`jdk1.6`之前为循环链表）
 3. 插入和删除是否受元素位置的影响：①  `ArrayList`采用数组存储，所以插入和删除元素的时间复杂度受元素的位置的影响。
 3. 插入和删除是否受元素位置的影响：①  `ArrayList`采用数组存储，所以插入和删除元素的时间复杂度受元素的位置的影响。比如：执行add(E e)方法的时候，`ArrayList` 会默认在将指定的元素追加到此列表的末尾，这种情况的话(add(int index, E element) )时间复杂度就为O(n-i)。因此在进行上述操作的时候，`ArrayList` 会默认在将指定的元素追加到此列表的末尾，这种情况时间复杂度就是o(1)。但是如果要在指定位置i插入和删除元素的话（add(int index,E element)）时间复杂度就为O(n-i)。因为在进行上述操作的时候集合中第i和第i个元素之后的(n-i)个元素都要执行向后位/向前移一位的操作。② **`LinkedList` 采用链表存储，所以对于add(E e)方法插入，删除元素的时间复杂度不受元素位置的影响，近似O(1),如果是要在指定位置i插入和删除元素的话((add(int index,E element)))时间复杂度近似为o(n)因为需要先移动到指定位置再插入**。
 
 4. 是否支持快速随机访问：`LinkedList` 不支持高效的随机元素访问，而`Arraylist`支持，快速随机访问就是通过元素的序号快速获取元素对象（对应get(int index)方法）。
 
-5. 内存空间：ArrayList的空间浪费主要体现在list列表的结尾会预留一定的容量空间，而LinkedList的空间花费则体现在它的每一个元素都需要消耗比ArrayList更多的空间（应为要存放直接后继和直接前驱以及数据）
+5. 内存空间：`ArrayList`的空间浪费主要体现在list列表的结尾会预留一定的容量空间，而`LinkedList`的空间花费则体现在它的每一个元素都需要消耗比`ArrayList`更多的空间（应为要存放直接后继和直接前驱以及数据）
 
    
 
 ## 1.3 Collection子接口之Set
 
-   ### 1.3.1 比较 HashSet、LinkedHashSet 和 TreeSet 三者的异同
+   ### 1.3.1 比较 `HashSet`、`LinkedHashSet` 和 `TreeSet` 三者的异同
 
-HashSet 是 Set 接口的主要实现类 ，HashSet 的底层是 HashMap，线程不安全的，可以存储 null 值；
+`HashSet` 是 Set 接口的主要实现类 ，`HashSet` 的底层是` HashMap`，线程不安全的，可以存储 null 值；
 
-LinkedHashSet 是 HashSet 的子类，能够按照添加的顺序遍历；
+`LinkedHashSet` 是 `HashSet` 的子类，能够按照添加的顺序遍历；
 
-TreeSet 底层使用红黑树，能够按照添加元素的顺序进行遍历，排序的方式有自然排序和定制排序。
+`TreeSet` 底层使用红黑树，能够按照添加元素的顺序进行遍历，排序的方式有自然排序和定制排序。
 
 ## 1.4. Map 接口
 
-   ### 1.4.1. HashMap和Hashtable的区别
+   ### 1.4.1. `HashMap`和`Hashtable`的区别
 
-1. 线程是否安全：`HashMap`线程不安全；`HashTable`线程安全，内部的方法基本都经过`Synchronized`修饰，如果要保证线程的安全推荐使用ConcurrentHashMap;
-2. 效率：因为线程安全的问题，HashMap要比HashTable效率高一点，并且HashTable基本被淘汰
-3. 对Null key 和Null Value 的支持：HashMap 中，null 可以作为键，这样的键只有一个，可以有一个或多个键所对应的值为 null。。但是在 HashTable 中 put 进的键值只要有一个 null，直接抛出 NullPointerException。 
-4. **初始容量大小和每次扩充容量大小的不同 ：** ①创建时如果不指定容量初始值，Hashtable 默认的初始大小为11，之后每次扩充，容量变为原来的2n+1。HashMap 默认的初始化大小为16。之后每次扩充，容量变为原来的2倍。②创建时如果给定了容量初始值，那么 Hashtable 会直接使用你给定的大小，而 HashMap 会将其扩充为2的幂次方大小；
+1. 线程是否安全：`HashMap`线程不安全；`HashTable`线程安全，内部的方法基本都经过`Synchronized`修饰，如果要保证线程的安全推荐使用`ConcurrentHashMap`;
+2. 效率：因为线程安全的问题，`HashMap`要比`HashTable`效率高一点，并且`HashTable`基本被淘汰
+3. 对Null key 和Null Value 的支持：`HashMap` 中，null 可以作为键，这样的键只有一个，可以有一个或多个键所对应的值为 null。。但是在 `HashTable` 中 put 进的键值只要有一个 null，直接抛出 `NullPointerException`。 
+4. **初始容量大小和每次扩充容量大小的不同 ：** ①创建时如果不指定容量初始值，`Hashtable` 默认的初始大小为11，之后每次扩充，容量变为原来的2n+1。HashMap 默认的初始化大小为16。之后每次扩充，容量变为原来的2倍。②创建时如果给定了容量初始值，那么 Hashtable 会直接使用你给定的大小，而 HashMap 会将其扩充为2的幂次方大小；
 5. **底层数据结构：** JDK1.8 以后的 HashMap 在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为8）时，将链表转化为红黑树，以减少搜索时间。Hashtable 没有这样的机制。
 
 ### 1.4.2 [HashMap和ConcurrentHashMap的区别](  https://juejin.cn/post/6844903641866846222)
